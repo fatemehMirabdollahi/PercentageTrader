@@ -1,5 +1,5 @@
 function MarketDetails() {
-  return <div>MarketDetails</div>;
+  return <div className="bg-primary">MarketDetails</div>;
 }
 
 export default MarketDetails;
