@@ -8,7 +8,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<DefaultLayout />}>
-          <Route index element={<Markets />} />
+          <Route path="/:tab" element={<Markets />} />
           <Route path="/market/:market" element={<MarketDetails />} />
         </Route>
       </Routes>

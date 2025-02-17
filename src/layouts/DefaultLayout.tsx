@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 
 function DefaultLayout() {
   return (
-    <div className="w-screen h-screen flex flex-col bg-background text-on-background">
+    <div className="w-screen h-screen flex flex-col bg-background text-on-background" dir="rtl">
       <header className="bg-primary text-on-primary p-4">
         <span className="text-xl font-bold">Percentage Trader</span>
       </header>
