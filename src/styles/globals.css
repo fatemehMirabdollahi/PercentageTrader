@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --primary: #0047ab;
-  --on-primary: #ffffff;
-  --primary-container: #d6e4ff;
-  --on-primary-container: #001d44;
-  --secondary: #5a5a5a;
-  --on-secondary: #ffffff;
-  --secondary-container: #e6e6e6;
-  --on-secondary-container: #202020;
-  --background: #f9fafb;
-  --on-background: #1a1a1a;
+  --primary: #006400; /* Dark green suitable for financial applications */
+  --on-primary: #ffffff; /* White text on primary */
+  --primary-container: #e9fcfb; /* Very light teal, less green */
+  --on-primary-container: #004d40; /* Dark teal text on primary container */
+  --secondary: #388e3c; /* Medium green */
+  --on-secondary: #ffffff; /* White text on secondary */
+  --secondary-container: #c8e6c9; /* Soft light green */
+  --on-secondary-container: #1b5e20; /* Dark green text on secondary container */
+  --background: #fafafa; /* Neutral off-white background */
+  --on-background: #263238; /* Dark slate-gray text, professional and readable */
 }
 
 body {
