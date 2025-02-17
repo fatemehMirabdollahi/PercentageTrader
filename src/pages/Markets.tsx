@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import MarketService from "../services/markets.service";
 
 function Markets() {
   const tabs = [
@@ -11,6 +12,8 @@ function Markets() {
 
   const location = useLocation();
   const navigate = useNavigate();
+
+  MarketService.getMarkets();
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
