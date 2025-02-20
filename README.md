@@ -54,11 +54,11 @@ Percentage Trader is a tool designed for trading cryptocurrencies with percentag
 
 ### Improvements
 
-1. **Responsive Design for Mobile**:
+1. **Responsive Design for Mobile**
 
-- **Layout Adjustments**: The project needs a layout that adapts to mobile screens.
-- **Text and Element Sizing**: The text sizes, padding, and margins must be adjusted for better readability on mobile devices using Tailwind's utilities.
-- **Mobile-Friendly Tables**: Tables must be either scrollable horizontally or have a more compact layout on mobile to avoid overflow issues and ensure smooth usability.
+   - Layout Adjustments: The project needs a layout that adapts to mobile screens.
+   - Text and Element Sizing: The text sizes, padding, and margins must be adjusted for better readability on mobile devices using Tailwind's utilities.
+   - Mobile-Friendly Tables: Tables must be either scrollable horizontally or have a more compact layout on mobile to avoid overflow issues and ensure smooth usability.
 
 2. **Loader Animation**:
    The project needs a loader animation to enhance the user experience. This would help inform users that data is being fetched or processed, preventing confusion and improving overall interaction.
@@ -69,7 +69,7 @@ Percentage Trader is a tool designed for trading cryptocurrencies with percentag
 4. **Market Details API**:
    The project needs an API to fetch detailed data of a market using its ID. This would allow adding additional information such as the market's name, values (like price, volume, changes), and even the market's icon in the second page for clearity. While it's possible to store data on the client side, it’s not an ideal solution.
 
-5. **Improvement in Data Retrieval for Markets Page**
+5. **Improvement in Data Fetching for Markets Page**
 
    - Implement backend pagination for the Markets page to handle large datasets efficiently.
    - Create a dedicated API for dynamic data, especially for frequently updated fields like price and change.
