@@ -9,7 +9,7 @@ interface MarketTableProps {
 
 const ITEMS_PER_PAGE = 10;
 
-const MarketsTable: React.FC<MarketTableProps> = ({ data, activeTab }) => {
+function MarketsTable({ data, activeTab }: MarketTableProps) {
   const [pagination, setPagination] = useState({
     irt: {
       currentPage: 1,
@@ -31,6 +31,7 @@ const MarketsTable: React.FC<MarketTableProps> = ({ data, activeTab }) => {
     startIndex,
     startIndex + ITEMS_PER_PAGE
   );
+
   const handlePageChange = (page: number) => {
     setPagination((prev) => ({
       ...prev,
@@ -41,6 +42,7 @@ const MarketsTable: React.FC<MarketTableProps> = ({ data, activeTab }) => {
   const openMarketDetails = (marketId: number) => {
     navigate(`/market/${marketId}`);
   };
+
   return (
     <div className="overflow-x-auto bg-background text-on-background p-4 rounded-lg shadow-md">
       <table className="w-full border-collapse">
@@ -82,6 +84,6 @@ const MarketsTable: React.FC<MarketTableProps> = ({ data, activeTab }) => {
       />
     </div>
   );
-};
+}
 
 export default MarketsTable;

@@ -7,11 +7,11 @@ interface PaginationControlsProps {
   onPageChange: (page: number) => void;
 }
 
-const PaginationControls: React.FC<PaginationControlsProps> = ({
+function PaginationControls({
   currentPage,
   totalPages,
   onPageChange,
-}) => {
+}: PaginationControlsProps) {
   const maxVisiblePages = 3;
 
   const getPageNumbers = () => {
@@ -81,6 +81,6 @@ const PaginationControls: React.FC<PaginationControlsProps> = ({
       </button>
     </div>
   );
-};
+}
 
 export default PaginationControls;
