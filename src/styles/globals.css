@@ -14,6 +14,21 @@
   --negative: #ff093d;
 }
 
+:root[data-theme="dark"] {
+  --primary: #004d00; /* Dark green suitable for financial applications */
+  --on-primary: #ffffff; /* White text on primary */
+  --primary-container: #015736; /* Slightly darker teal */
+  --on-primary-container: #e5f3f2; /* Light teal text on primary container */
+  --secondary: #499949; /* Darker green */
+  --on-secondary: #ffffff; /* White text on secondary */
+  --secondary-container: #154d19; /* Dark green */
+  --on-secondary-container: #e6fce4; /* Light green text on secondary container */
+  --background: #121212; /* Very dark background for dark mode */
+  --on-background: #e0e0e0; /* Light gray text for contrast */
+  --positive: #70e000; /* Brighter positive green for visibility */
+  --negative: #ff5c5c; /* Softer red for better contrast in dark mode */
+}
+
 body {
   margin: 0;
   display: flex;

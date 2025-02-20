@@ -17,7 +17,7 @@ function Tabs({ tabs, activeTab, onTabChange }: TabsProps) {
           key={tab.value}
           className={`py-2 px-4 ${
             activeTab === tab.value
-              ? "border-b-2 border-primary text-primary"
+              ? "border-b-2 border-primary text-on-primary-container"
               : "text-secondary cursor-pointer"
           }`}
           onClick={() => onTabChange(tab.value)}

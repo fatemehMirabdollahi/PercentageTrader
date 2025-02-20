@@ -1,20 +1,46 @@
 import { Outlet } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
 
 function DefaultLayout() {
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
+
+  useEffect(() => {
+    if (darkMode) {
+      localStorage.setItem("theme", "dark");
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+      document.documentElement.setAttribute("data-theme", "");
+      localStorage.setItem("data-theme", "light");
+    }
+  }, [darkMode]);
+
   return (
     <div
       className="w-screen h-screen flex flex-col bg-background text-on-background overflow-x-hidden"
       dir="rtl"
     >
-      <header className="bg-primary text-on-primary p-4 fixed top-0 left-0 w-full shadow-md">
-        <span className="text-xl font-bold">Percentage Trader</span>
+      <header className="bg-primary text-on-primary p-4 fixed top-0 w-full h-16 shadow-md flex justify-between items-center">
+        <span className="text-xl font-bold">ابزار سفارش‌گذاری درصدی</span>
+        <button
+          className="p-2 rounded-full bg-secondary"
+          onClick={() => setDarkMode(!darkMode)}
+        >
+          {darkMode ? (
+            <SunIcon className="w-6 h-6 text-yellow-500" />
+          ) : (
+            <MoonIcon className="w-6 h-6 text-primary" />
+          )}
+        </button>
       </header>
-      <main className="flex-1 p-6 pt-16 w-full max-w-screen overflow-x-hidden">
-        <div className="bg-primary-container p-4 rounded-lg shadow-md min-h-full w-full overflow-x-hidden">
+      <main className="flex-1 p-6 pt-20 w-full max-w-screen overflow-x-hidden">
+        <div className="bg-primary-container p-4 rounded-lg shadow-md h-full w-full overflow-x-hidden">
           <Outlet />
         </div>
       </main>
-    </div>
+    </div>  
   );
 }
 
