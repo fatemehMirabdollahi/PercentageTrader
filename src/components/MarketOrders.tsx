@@ -72,12 +72,16 @@ function MarketOrders({ orderType }: MarketOrdersProps) {
                 <td className="py-2 px-4">{order.remain.toLocaleString()}</td>
               </tr>
             ))}
-          {orders && (
+          {orders?.length ? (
             <tr className="bg-primary text-on-primary">
-              <td className="p-4">{cumulativeRow.price.toLocaleString()}</td>
+              <td className="p-4">
+                {cumulativeRow.price.toLocaleString() && 0}
+              </td>
               <td className="p-4">{cumulativeRow.value.toLocaleString()}</td>
               <td className="p-4">{cumulativeRow.remain.toLocaleString()}</td>
             </tr>
+          ) : (
+            ""
           )}
         </tbody>
       </table>

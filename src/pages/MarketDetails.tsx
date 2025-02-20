@@ -35,7 +35,7 @@ function MarketDetails() {
   return (
     <div className="p-4">
       <Tabs tabs={tabs} activeTab={activeTab} onTabChange={handleTabChange} />
-      <div className="mt-4">
+      <div className="mt-4 w-full">
         {activeTab === "trades" && <MarketTrades />}
         {activeTab === "buy" && <MarketOrders orderType="buy" />}
         {activeTab === "sell" && <MarketOrders orderType="sell" />}

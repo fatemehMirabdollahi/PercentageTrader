@@ -53,7 +53,7 @@ function Calculator({ orderBook, side, ramainSum }: TradeFormProps) {
             value={inputValue}
             required
             onChange={(e) => setInputValue(e.target.value)}
-            className="border border-secondary rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
+            className="w-full sm:w-1/2 border border-secondary rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
           />
           <span className="mx-2">%</span>
         </div>
@@ -68,15 +68,21 @@ function Calculator({ orderBook, side, ramainSum }: TradeFormProps) {
         <div className="mt-4">
           <div className="text-lg font-semibold text-on-background">
             حجم ارز قابل دریافت:
-            <span className="text-primary px-2">{requestResult.remain.toLocaleString()}</span>
+            <span className="text-primary px-2">
+              {requestResult.remain.toLocaleString()}
+            </span>
           </div>
           <div className="text-lg font-semibold text-on-background">
             میانگین قیمت:
-            <span className="text-primary px-2">{requestResult.price.toLocaleString()}</span>
+            <span className="text-primary px-2">
+              {requestResult.price.toLocaleString()}
+            </span>
           </div>
           <div className="text-lg font-semibold text-on-background">
             مبلغ قابل پرداخت:
-            <span className="text-primary px-2">{requestResult.price.toLocaleString()}</span>
+            <span className="text-primary px-2">
+              {requestResult.price.toLocaleString()}
+            </span>
           </div>
         </div>
       )}
