@@ -1,50 +1,76 @@
-# React + TypeScript + Vite
+# Percentage Trader
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+Percentage Trader is a tool designed for trading cryptocurrencies with percentage-based order placement. The application allows users to select a market, view orders and trades, and calculate the payment amount based on a selected percentage of the volume in the chosen market.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Pages
 
-## Expanding the ESLint configuration
+### 1. Market List
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Description**: Users can view a list of available markets.
+- **Functionality**: Upon selecting a market, users will be redirected to the market details page.
 
-- Configure the top-level `parserOptions` property like this:
+### 2. Market Details
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **Description**: Users can view the list of orders and trades for the selected market.
+- **Functionality**: Users can enter a percentage value to calculate the cryptocurrency volume, average price, and total amount payable based on their input.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Features
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- **Market Selection**: Users can choose a market to view its details.
+- **Order/Trade Viewing**: Users can view the list of orders and trades for the selected market.
+- **Percentage-based Calculation**: Users can input a percentage to calculate the volume, price, and total amount.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Technologies Used
+
+- React.js
+- Tailwind CSS
+- React Router
+- Axios (for API requests)
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/fatemehMirabdollahi/PercentageTrader.git
+   ```
+2. Navigate into the project directory:
+
+   ```bash
+   cd percentage-trader
+   ```
+
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
+4. Run the development server:
+   ```bash
+   npm start
+   ```
+
+### Improvements
+
+### Improvements
+
+1. **Responsive Design for Mobile**:
+
+- **Layout Adjustments**: The project needs a layout that adapts to mobile screens.
+- **Text and Element Sizing**: The text sizes, padding, and margins must be adjusted for better readability on mobile devices using Tailwind's utilities.
+- **Mobile-Friendly Tables**: Tables must be either scrollable horizontally or have a more compact layout on mobile to avoid overflow issues and ensure smooth usability.
+
+2. **Loader Animation**:
+   The project needs a loader animation to enhance the user experience. This would help inform users that data is being fetched or processed, preventing confusion and improving overall interaction.
+
+3. **React Query for Data Handling**:
+   The project could benefit from using React Query to manage loading states, errors, and retries particularly for market data, but for this case caching option is not suitable.
+
+4. **Market Details API**:
+   The project needs an API to fetch detailed data of a market using its ID. This would allow adding additional information such as the market's name, values (like price, volume, changes), and even the market's icon in the second page for clearity. While it's possible to store data on the client side, it’s not an ideal solution.
+
+5. **Improvement in Data Retrieval for Markets Page**
+
+   - Implement backend pagination for the Markets page to handle large datasets efficiently.
+   - Create a dedicated API for dynamic data, especially for frequently updated fields like price and change.
+   - Use WebSockets to provide real-time updates to market data, avoiding full page reloads and improving user experience.
