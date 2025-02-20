@@ -67,16 +67,16 @@ function MarketOrders({ orderType }: MarketOrdersProps) {
                 key={order.id}
                 className="border-b border-secondary-container hover:bg-primary-container"
               >
-                <td className="py-2 px-4">{order.price}</td>
-                <td className="py-2 px-4">{order.value}</td>
-                <td className="py-2 px-4">{order.remain}</td>
+                <td className="py-2 px-4">{order.price.toLocaleString()}</td>
+                <td className="py-2 px-4">{order.value.toLocaleString()}</td>
+                <td className="py-2 px-4">{order.remain.toLocaleString()}</td>
               </tr>
             ))}
           {orders && (
             <tr className="bg-primary text-on-primary">
-              <td className="p-4">{cumulativeRow.price}</td>
-              <td className="p-4">{cumulativeRow.value}</td>
-              <td className="p-4">{cumulativeRow.remain}</td>
+              <td className="p-4">{cumulativeRow.price.toLocaleString()}</td>
+              <td className="p-4">{cumulativeRow.value.toLocaleString()}</td>
+              <td className="p-4">{cumulativeRow.remain.toLocaleString()}</td>
             </tr>
           )}
         </tbody>

@@ -68,15 +68,15 @@ function Calculator({ orderBook, side, ramainSum }: TradeFormProps) {
         <div className="mt-4">
           <div className="text-lg font-semibold text-on-background">
             حجم ارز قابل دریافت:
-            <span className="text-primary px-2">{requestResult.remain}</span>
+            <span className="text-primary px-2">{requestResult.remain.toLocaleString()}</span>
           </div>
           <div className="text-lg font-semibold text-on-background">
             میانگین قیمت:
-            <span className="text-primary px-2">{requestResult.price}</span>
+            <span className="text-primary px-2">{requestResult.price.toLocaleString()}</span>
           </div>
           <div className="text-lg font-semibold text-on-background">
             مبلغ قابل پرداخت:
-            <span className="text-primary px-2">{requestResult.price}</span>
+            <span className="text-primary px-2">{requestResult.price.toLocaleString()}</span>
           </div>
         </div>
       )}

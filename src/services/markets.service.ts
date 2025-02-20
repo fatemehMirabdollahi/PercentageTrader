@@ -1,5 +1,5 @@
 import api from "./api";
-
+import Decimal from "decimal.js";
 class MarketsService {
   async getMarkets(): Promise<MarketsData> {
     const response = await api.get("/v1/mkt/markets/");
@@ -8,9 +8,9 @@ class MarketsService {
         const market = {
           id: e.id,
           code: e.code,
-          price: e.price,
-          change_24: e.order_book_info.change,
-          volume_24: e.order_book_info.amount,
+          price: new Decimal(e.price).toNumber(),
+          change_24: new Decimal(e.order_book_info.change).toNumber(),
+          volume_24: new Decimal(e.order_book_info.amount).toNumber(),
           currency1: {
             code: e.currency1.code,
             title: e.currency1.title_fa,
@@ -27,7 +27,6 @@ class MarketsService {
         } else {
           acc.usdt.push(market);
         }
-
         return acc;
       },
       { irt: [], usdt: [] } as MarketsData

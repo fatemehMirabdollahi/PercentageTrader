@@ -38,8 +38,10 @@ function MarketTrades() {
                 className="border-b border-secondary-container hover:bg-primary-container"
               >
                 <td className="py-2 px-4">{trade.time}</td>
-                <td className="py-2 px-4">{trade.price}</td>
-                <td className="py-2 px-4">{trade.match_amount}</td>
+                <td className="py-2 px-4">{trade.price.toLocaleString()}</td>
+                <td className="py-2 px-4">
+                  {trade.match_amount.toLocaleString()}
+                </td>
               </tr>
             ))}
         </tbody>

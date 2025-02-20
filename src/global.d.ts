@@ -21,9 +21,9 @@ interface MarketsData {
 
 interface Trade {
   id: string;
-  match_amount: string;
-  price: string;
-  time: string;
+  match_amount: number;
+  price: number;
+  time: number;
 }
 
 interface Order {
