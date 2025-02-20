@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 import MarketsTable from "../components/MarketsTable";
 import Tabs from "../components/base/Tabs";
@@ -29,7 +30,9 @@ function Markets() {
   useEffect(() => {
     MarketService.getMarkets()
       .then((response) => setMarkets(response))
-      .catch((err) => console.error("Error fetching markets:", err));
+      .catch(() => {
+        toast.error("خطا در دریافت اطلاعات");
+      });
   }, []);
 
   const handleTabChange = (tab: string) => {
@@ -47,7 +50,7 @@ function Markets() {
             activeTab={activeTab as "irt" | "usdt"}
           />
         ) : (
-          <p className="text-secondary">درحال بارگزاری اطلاعات ...</p>
+          ""
         )}
       </div>
     </div>

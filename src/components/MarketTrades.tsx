@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import marketDetailsService from "../services/marketDetails.service";
 
@@ -12,7 +13,9 @@ function MarketTrades() {
         marketDetailsService
           .getMarketTrades(marketId)
           .then((response) => setTrades(response))
-          .catch((err) => console.error("Error fetching markets:", err));
+          .catch(() => () => {
+            toast.error("خطا در دریافت اطلاعات");
+          });
       }
     };
     fetchData();

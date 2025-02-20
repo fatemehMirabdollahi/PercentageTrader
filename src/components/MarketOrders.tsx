@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import marketDetailsService from "../services/marketDetails.service";
 import TradeForm from "./TradeForm";
@@ -23,7 +24,7 @@ function MarketOrders({ orderType }: MarketOrdersProps) {
         marketDetailsService
           .getMarketOrders(marketId, orderType)
           .then((response) => setOrders(response))
-          .catch((err) => console.error("Error fetching orders:", err));
+          .catch(() => toast.error("خطا در دریافت اطلاعات"));
       }
     };
     fetchData();
