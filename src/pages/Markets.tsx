@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import MarketService from "../services/markets.service";
+import MarketsTable from "../components/MarketsTable"; // Import the table component
 
 function Markets() {
   const tabs = [
@@ -9,21 +10,30 @@ function Markets() {
   ];
 
   const [activeTab, setActiveTab] = useState<string>(tabs[0].value);
+  const [markets, setMarkets] = useState<MarketData | null>(null);
 
   const location = useLocation();
   const navigate = useNavigate();
 
-  MarketService.getMarkets();
-
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     const selectedTab = queryParams.get("tab");
-    if (selectedTab && tabs.map((t) => t.value).includes(selectedTab)) {
+    if (selectedTab && tabs.some((t) => t.value === selectedTab)) {
       setActiveTab(selectedTab);
     } else {
       handleTabChange(tabs[0].value);
     }
   }, [location.search]);
+
+  useEffect(() => {
+    MarketService.getMarkets()
+      .then((response) => {
+        setMarkets(response);
+      })
+      .catch((err) => {
+        console.error("Error fetching markets:", err);
+      });
+  }, []);
 
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
@@ -37,7 +47,9 @@ function Markets() {
           <button
             key={tab.value}
             className={`py-2 px-4 cursor-pointer ${
-              activeTab === tab.value ? "border-b-2 border-primary" : ""
+              activeTab === tab.value
+                ? "border-b-2 border-primary text-primary"
+                : "text-secondary"
             }`}
             onClick={() => handleTabChange(tab.value)}
           >
@@ -46,10 +58,13 @@ function Markets() {
         ))}
       </div>
       <div className="mt-4">
-        {activeTab === "irt" ? (
-          <div>Simple content for پایه تومان</div>
+        {markets ? (
+          <MarketsTable
+            data={markets}
+            activeTab={activeTab as "irt" | "usdt"}
+          />
         ) : (
-          <div>Simple content for پایه تتر</div>
+          <p className="text-secondary">درحال بارگزاری اطلاعات ...</p>
         )}
       </div>
     </div>

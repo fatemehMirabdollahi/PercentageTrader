@@ -1,5 +1,4 @@
-@import "tailwindcss";
-
+@import "./tailwind.css";
 :root {
   --primary: #006400; /* Dark green suitable for financial applications */
   --on-primary: #ffffff; /* White text on primary */
@@ -11,6 +10,8 @@
   --on-secondary-container: #1b5e20; /* Dark green text on secondary container */
   --background: #fafafa; /* Neutral off-white background */
   --on-background: #263238; /* Dark slate-gray text, professional and readable */
+  --positive: #a5e75a;
+  --negative: #ff093d;
 }
 
 body {
@@ -19,17 +20,4 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-}
-
-@theme {
-  --color-primary: var(--primary);
-  --color-on-primary: var(--on-primary);
-  --color-primary-container: var(--primary-container);
-  --color-on-primary-container: var(--on-primary-container);
-  --color-secondary: var(--secondary);
-  --color-on-secondary: var(--on-secondary);
-  --color-secondary-container: var(--secondary-container);
-  --color-on-secondary-container: var(--on-secondary-container);
-  --color-background: var(--background);
-  --color-on-background: var(--on-background);
 }
