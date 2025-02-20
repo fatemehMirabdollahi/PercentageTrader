@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import marketDetailsService from "../services/marketDetails.service";
 import TradeForm from "./TradeForm";

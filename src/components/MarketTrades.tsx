@@ -1,6 +1,6 @@
-import marketDetailsService from "../services/marketDetails.service";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import marketDetailsService from "../services/marketDetails.service";
 
 function MarketTrades() {
   const [trades, setTrades] = useState<Trade[] | null>(null);

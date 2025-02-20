@@ -1,5 +1,5 @@
-import api from "./api";
 import Decimal from "decimal.js";
+import api from "./api";
 class MarketsService {
   async getMarkets(): Promise<MarketsData> {
     const response = await api.get("/v1/mkt/markets/");

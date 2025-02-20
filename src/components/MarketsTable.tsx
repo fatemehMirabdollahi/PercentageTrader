@@ -1,6 +1,6 @@
 import { useState } from "react";
-import PaginationControls from "../components/PaginationControls";
 import { useNavigate } from "react-router-dom";
+import PaginationControls from "../components/PaginationControls";
 
 interface MarketTableProps {
   data: MarketsData;

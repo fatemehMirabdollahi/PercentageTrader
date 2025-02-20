@@ -1,6 +1,6 @@
 import Decimal from "decimal.js";
-import api from "./api";
 import moment from "jalali-moment";
+import api from "./api";
 
 class MarketDetailService {
   async getMarketTrades(marketId: string): Promise<Trade[]> {

@@ -1,7 +1,7 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import DefaultLayout from "./layouts/DefaultLayout";
 import MarketDetails from "./pages/MarketDetails";
 import Markets from "./pages/Markets";
-import DefaultLayout from "./layouts/DefaultLayout";
 
 function App() {
   return (
