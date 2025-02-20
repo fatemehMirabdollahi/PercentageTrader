@@ -12,8 +12,8 @@ function DefaultLayout() {
       localStorage.setItem("theme", "dark");
       document.documentElement.setAttribute("data-theme", "dark");
     } else {
-      document.documentElement.setAttribute("data-theme", "");
-      localStorage.setItem("data-theme", "light");
+      document.documentElement.removeAttribute("data-theme");
+      localStorage.setItem("theme", "light");
     }
   }, [darkMode]);
 
@@ -40,7 +40,7 @@ function DefaultLayout() {
           <Outlet />
         </div>
       </main>
-    </div>  
+    </div>
   );
 }
 
