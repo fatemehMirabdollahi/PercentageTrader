@@ -1,7 +1,7 @@
 interface Currency {
   code: string;
   title: string;
-  image?: string; 
+  image?: string;
 }
 
 interface Market {
@@ -10,10 +10,10 @@ interface Market {
   change_24: number;
   volume_24: number;
   currency1: Currency;
-  currency2: Omit<Currency, "image">; 
+  currency2: Omit<Currency, "image">;
 }
 
-interface MarketData {
-  IRT: Market[];
-  USDT: Market[];
+interface MarketsData {
+  irt: Market[];
+  usdt: Market[];
 }

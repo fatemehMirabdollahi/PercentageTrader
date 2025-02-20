@@ -1,11 +1,11 @@
 import api from "./api";
 
 class MarketsService {
-  async getMarkets(): Promise<MarketData> {
+  async getMarkets(): Promise<MarketsData> {
     const response = await api.get("/v1/mkt/markets/");
-    let formattedMarketData = response.data.results
-      .map((e: any) => {
-        return {
+    const formattedMarketData = response.data.results.reduce(
+      (acc: MarketsData, e: any) => {
+        const market = {
           code: e.code,
           price: e.price,
           change_24: e.order_book_info.change,
@@ -20,11 +20,20 @@ class MarketsService {
             title: e.currency2?.title_fa,
           },
         };
-      });
-    return {
-      IRT: formattedMarketData.filter((e: any) => e.currency2.code === "IRT"),
-      USDT: formattedMarketData.filter((e: any) => e.currency2.code === "USDT"),
-    };
+
+        if (e.currency2.code === "IRT") {
+          acc.irt.push(market);
+        } else {
+          acc.usdt.push(market);
+        }
+
+        return acc;
+      },
+      {irt: [], usdt: [] } as MarketsData
+    );
+
+    return formattedMarketData;
   }
 }
+
 export default new MarketsService();

@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import MarketService from "../services/markets.service";
 import MarketsTable from "../components/MarketsTable"; // Import the table component
-
 function Markets() {
   const tabs = [
     { name: "پایه تومان", value: "irt" },
@@ -10,7 +9,7 @@ function Markets() {
   ];
 
   const [activeTab, setActiveTab] = useState<string>(tabs[0].value);
-  const [markets, setMarkets] = useState<MarketData | null>(null);
+  const [markets, setMarkets] = useState<MarketsData | null>(null);
 
   const location = useLocation();
   const navigate = useNavigate();

@@ -1,24 +1,39 @@
-import React from "react";
-
-interface Market {
-  code: string;
-  price: number;
-  change_24: number;
-  volume_24: number;
-}
-
-interface MarketData {
-  IRT: Market[];
-  USDT: Market[];
-}
+import React, { useState } from "react";
+import PaginationControls from "../components/PaginationControls";
 
 interface MarketTableProps {
-  data: MarketData;
+  data: MarketsData;
   activeTab: "irt" | "usdt";
 }
 
+const ITEMS_PER_PAGE = 10;
+
 const MarketsTable: React.FC<MarketTableProps> = ({ data, activeTab }) => {
-  const markets = activeTab === "irt" ? data.IRT : data.USDT;
+  const [pagination, setPagination] = useState({
+    irt: {
+      currentPage: 1,
+      totalPages: Math.ceil(data.irt.length / ITEMS_PER_PAGE),
+    },
+    usdt: {
+      currentPage: 1,
+      totalPages: Math.ceil(data.usdt.length / ITEMS_PER_PAGE),
+    },
+  });
+
+  const activeMarkets = activeTab === "irt" ? data.irt : data.usdt;
+  const { currentPage, totalPages } = pagination[activeTab];
+
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const paginatedMarkets = activeMarkets.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE
+  );
+  const handlePageChange = (page: number) => {
+    setPagination((prev) => ({
+      ...prev,
+      [activeTab]: { ...prev[activeTab], currentPage: page },
+    }));
+  };
 
   return (
     <div className="overflow-x-auto bg-background text-on-background p-4 rounded-lg shadow-md">
@@ -32,7 +47,7 @@ const MarketsTable: React.FC<MarketTableProps> = ({ data, activeTab }) => {
           </tr>
         </thead>
         <tbody>
-          {markets.map((market) => (
+          {paginatedMarkets.map((market: Market) => (
             <tr
               key={market.code}
               className="border-b border-secondary-container hover:bg-primary-container"
@@ -51,6 +66,11 @@ const MarketsTable: React.FC<MarketTableProps> = ({ data, activeTab }) => {
           ))}
         </tbody>
       </table>
+      <PaginationControls
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 };
