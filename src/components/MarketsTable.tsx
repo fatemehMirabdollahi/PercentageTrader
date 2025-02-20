@@ -58,21 +58,39 @@ function MarketsTable({ data, activeTab }: MarketTableProps) {
           {paginatedMarkets.map((market: Market) => (
             <tr
               key={market.code}
-              className="border-b border-secondary-container hover:bg-primary-container"
+              className="border-b border-secondary-container hover:bg-primary-container cursor-pointer"
               onClick={() => {
                 openMarketDetails(market.id);
               }}
             >
-              <td className="py-2 px-4">{market.code}</td>
-              <td className="py-2 px-4">{market.price.toLocaleString()}</td>
+              <td className="py-2 px-4">
+                <div className="flex">
+                  <img
+                    src={market.currency1.image}
+                    className="w-8 h-8"
+                    alt=""
+                  />
+                  <div className="flex flex-col px-2 gap-1">
+                    <span>{market.currency1.title}</span>
+                    <span className="text-xs font-light">{market.code}</span>
+                  </div>
+                </div>
+              </td>
+              <td className="py-2 px-4">
+                {market.price.toLocaleString()}{" "}
+                <span className="unit">{market.currency2.code}</span>
+              </td>
               <td
                 className={`py-2 px-4 ${
                   market.change_24 >= 0 ? "text-positive" : "text-negative"
                 }`}
               >
-                {market.change_24}%
+                <span dir="ltr"> {market.change_24}% </span>
               </td>
-              <td className="py-2 px-4">{market.volume_24.toLocaleString()}</td>
+              <td className="py-2 px-4">
+                {market.volume_24.toLocaleString()}{" "}
+                <span className="unit">{market.currency1.code}</span>
+              </td>
             </tr>
           ))}
         </tbody>
