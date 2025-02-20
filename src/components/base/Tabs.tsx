@@ -5,7 +5,7 @@ interface Tab {
 
 interface TabsProps {
   tabs: Tab[];
-  activeTab: string;
+  activeTab: string | undefined;
   onTabChange: (tab: string) => void;
 }
 

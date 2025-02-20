@@ -1,4 +1,4 @@
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import marketDetailsService from "../services/marketDetails.service";
 
@@ -16,14 +16,19 @@ function MarketOrders({ orderType }: MarketOrdersProps) {
 
   const { marketId } = useParams();
 
-  useEffect(() => {
-    if (marketId) {
-      marketDetailsService
-        .getMarketOrders(marketId, orderType)
-        .then((response) => setOrders(response))
-        .catch((err) => console.error("Error fetching orders:", err));
-    }
-  }, [marketId, orderType]);
+  useEffect(() => {    
+    const fetchData = () => {
+      if (marketId) {
+        marketDetailsService
+          .getMarketOrders(marketId, orderType)
+          .then((response) => setOrders(response))
+          .catch((err) => console.error("Error fetching orders:", err));
+      }
+    };
+    fetchData();
+    const interval = setInterval(fetchData, 3000);
+    return () => clearInterval(interval);
+  }, [marketId]);
 
   useEffect(() => {
     if (orders) {

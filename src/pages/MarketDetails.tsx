@@ -15,7 +15,7 @@ function MarketDetails() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [activeTab, setActiveTab] = useState<string>(tabs[0].value);
+  const [activeTab, setActiveTab] = useState<string>();
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
@@ -36,9 +36,9 @@ function MarketDetails() {
     <div className="p-4">
       <Tabs tabs={tabs} activeTab={activeTab} onTabChange={handleTabChange} />
       <div className="mt-4">
+        {activeTab === "trades" && <MarketTrades />}
         {activeTab === "buy" && <MarketOrders orderType="buy" />}
         {activeTab === "sell" && <MarketOrders orderType="sell" />}
-        {activeTab === "trades" && <MarketTrades />}
       </div>
     </div>
   );

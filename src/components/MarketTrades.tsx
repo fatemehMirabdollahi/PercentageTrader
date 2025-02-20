@@ -7,12 +7,18 @@ function MarketTrades() {
   const { marketId } = useParams();
 
   useEffect(() => {
-    if (marketId)
-      marketDetailsService
-        .getMarketTrades(marketId)
-        .then((response) => setTrades(response))
-        .catch((err) => console.error("Error fetching markets:", err));
-  }, []);
+    const fetchData = () => {
+      if (marketId) {
+        marketDetailsService
+          .getMarketTrades(marketId)
+          .then((response) => setTrades(response))
+          .catch((err) => console.error("Error fetching markets:", err));
+      }
+    };
+    fetchData();
+    const interval = setInterval(fetchData, 3000);
+    return () => clearInterval(interval);
+  }, [marketId]);
 
   return (
     <div className="overflow-x-auto bg-background text-on-background p-4 rounded-lg shadow-md">
