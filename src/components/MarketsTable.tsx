@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PaginationControls from "../components/PaginationControls";
+import { useNavigate } from "react-router-dom";
 
 interface MarketTableProps {
   data: MarketsData;
@@ -20,6 +21,8 @@ const MarketsTable: React.FC<MarketTableProps> = ({ data, activeTab }) => {
     },
   });
 
+  const navigate = useNavigate();
+
   const activeMarkets = activeTab === "irt" ? data.irt : data.usdt;
   const { currentPage, totalPages } = pagination[activeTab];
 
@@ -35,6 +38,9 @@ const MarketsTable: React.FC<MarketTableProps> = ({ data, activeTab }) => {
     }));
   };
 
+  const openMarketDetails = (marketId: number) => {
+    navigate(`/market/${marketId}`);
+  };
   return (
     <div className="overflow-x-auto bg-background text-on-background p-4 rounded-lg shadow-md">
       <table className="w-full border-collapse">
@@ -51,6 +57,9 @@ const MarketsTable: React.FC<MarketTableProps> = ({ data, activeTab }) => {
             <tr
               key={market.code}
               className="border-b border-secondary-container hover:bg-primary-container"
+              onClick={() => {
+                openMarketDetails(market.id);
+              }}
             >
               <td className="py-2 px-4">{market.code}</td>
               <td className="py-2 px-4">{market.price.toLocaleString()}</td>

@@ -9,7 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<DefaultLayout />}>
           <Route index element={<Markets />} />
-          <Route path="/market/:market" element={<MarketDetails />} />
+          <Route path="/market/:marketId" element={<MarketDetails />} />
         </Route>
       </Routes>
     </Router>

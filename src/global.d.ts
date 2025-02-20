@@ -5,6 +5,7 @@ interface Currency {
 }
 
 interface Market {
+  id: number;
   code: string;
   price: number;
   change_24: number;

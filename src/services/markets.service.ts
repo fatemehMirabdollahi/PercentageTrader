@@ -6,6 +6,7 @@ class MarketsService {
     const formattedMarketData = response.data.results.reduce(
       (acc: MarketsData, e: any) => {
         const market = {
+          id: e.id,
           code: e.code,
           price: e.price,
           change_24: e.order_book_info.change,
@@ -29,7 +30,7 @@ class MarketsService {
 
         return acc;
       },
-      {irt: [], usdt: [] } as MarketsData
+      { irt: [], usdt: [] } as MarketsData
     );
 
     return formattedMarketData;
