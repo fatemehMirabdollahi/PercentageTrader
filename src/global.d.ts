@@ -1,7 +1,7 @@
 interface Currency {
   code: string;
   title: string;
-  image?: string;
+  image: string;
 }
 
 interface Market {
@@ -17,4 +17,18 @@ interface Market {
 interface MarketsData {
   irt: Market[];
   usdt: Market[];
+}
+
+interface Trade {
+  id: string;
+  match_amount: string;
+  price: string;
+  time: string;
+}
+
+interface Order {
+  id: string;
+  price: string;
+  value: string;
+  remain: string;
 }

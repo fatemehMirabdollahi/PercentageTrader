@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import MarketService from "../services/markets.service";
 import MarketsTable from "../components/MarketsTable";
-import Tabs from "../components/base/Tabs"; // Import the new Tabs component
+import Tabs from "../components/base/Tabs";
 
 function Markets() {
   const tabs = [
