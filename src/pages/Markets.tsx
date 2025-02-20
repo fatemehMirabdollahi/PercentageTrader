@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import MarketService from "../services/markets.service";
-import MarketsTable from "../components/MarketsTable"; // Import the table component
+import MarketsTable from "../components/MarketsTable";
+import Tabs from "../components/base/Tabs"; // Import the new Tabs component
+
 function Markets() {
   const tabs = [
     { name: "پایه تومان", value: "irt" },
@@ -26,12 +28,8 @@ function Markets() {
 
   useEffect(() => {
     MarketService.getMarkets()
-      .then((response) => {
-        setMarkets(response);
-      })
-      .catch((err) => {
-        console.error("Error fetching markets:", err);
-      });
+      .then((response) => setMarkets(response))
+      .catch((err) => console.error("Error fetching markets:", err));
   }, []);
 
   const handleTabChange = (tab: string) => {
@@ -41,21 +39,7 @@ function Markets() {
 
   return (
     <div className="p-4">
-      <div className="flex space-x-4 border-b">
-        {tabs.map((tab) => (
-          <button
-            key={tab.value}
-            className={`py-2 px-4 cursor-pointer ${
-              activeTab === tab.value
-                ? "border-b-2 border-primary text-primary"
-                : "text-secondary"
-            }`}
-            onClick={() => handleTabChange(tab.value)}
-          >
-            {tab.name}
-          </button>
-        ))}
-      </div>
+      <Tabs tabs={tabs} activeTab={activeTab} onTabChange={handleTabChange} />
       <div className="mt-4">
         {markets ? (
           <MarketsTable
