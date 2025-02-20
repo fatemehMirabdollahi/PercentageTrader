@@ -28,7 +28,7 @@ interface Trade {
 
 interface Order {
   id: string;
-  price: string;
-  value: string;
-  remain: string;
+  price: number;
+  value: number;
+  remain: number;
 }

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import marketDetailsService from "../services/marketDetails.service";
+import TradeForm from "./TradeForm";
 
 interface MarketOrdersProps {
   orderType: "buy" | "sell";
@@ -16,7 +17,7 @@ function MarketOrders({ orderType }: MarketOrdersProps) {
 
   const { marketId } = useParams();
 
-  useEffect(() => {    
+  useEffect(() => {
     const fetchData = () => {
       if (marketId) {
         marketDetailsService
@@ -80,6 +81,11 @@ function MarketOrders({ orderType }: MarketOrdersProps) {
           )}
         </tbody>
       </table>
+      <TradeForm
+        orderBook={orders || []}
+        side={orderType}
+        ramainSum={cumulativeRow.remain}
+      />
     </div>
   );
 }

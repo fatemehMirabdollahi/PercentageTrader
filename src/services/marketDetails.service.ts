@@ -20,9 +20,9 @@ class MarketDetailService {
       .slice(0, 10)
       .map((trade: any, index: number) => ({
         id: index,
-        remain: trade.remain,
-        price: trade.price,
-        value: trade.value,
+        remain: Number(trade.remain),
+        price: Number(trade.price),
+        value: Number(trade.value),
       }));
     return trades;
   }
